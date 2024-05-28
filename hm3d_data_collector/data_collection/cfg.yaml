@@ -12,25 +12,12 @@ hm_scene_name: h1zeeAwLh9Z
 hm_data_version: 1
 
 habitat:
-  scene: /media/datasets/habitat/v0.2/${hm_split}/${hm_idx_scene}-${hm_scene_name}/${hm_scene_name}.basis.glb
-  scene_dataset_config_file: /media/datasets/habitat/v0.2/${hm_split}/hm3d_annotated_${hm_split}_basis.scene_dataset_config.json
+  scene: ${hm3d_dir}/${hm_split}/${hm_idx_scene}-${hm_scene_name}/${hm_scene_name}.basis.glb
+  scene_dataset_config_file: ${hm3d_dir}/${hm_split}/hm3d_annotated_${hm_split}_basis.scene_dataset_config.json
   width: 1024
   height: 512
   hfov: 120
   sensor_height: 1.0
-  enable_physics: False
-  # sensors
-  color_sensor: True  
-  depth_sensor: True
-  semantic_sensor: True
-  ortho_rgba_sensor: True
-  ortho_depth_sensor: True
-  ortho_semantic_sensor: True
-  equirect_rgba_sensor: True
-  equirect_depth_sensor: True
-  equirect_semantic_sensor: True
-  fisheye_rgba_sensor: True
-  fisheye_depth_sensor: True
   actions: ${default_actions}
 
 default_actions:
@@ -47,9 +34,7 @@ default_actions:
   
 log_dir: ${get_hydra_file_dirname:}/logs/${date}
 
-# data_dir: /media/Pluto_tmp/kike/canonical_map_ws/collected_data/pilot_scenes
-data_dir: /media/datasets/hm_semantic_maps/pilot_scenes__obj_level
-# data_dir: ${log_dir}/data
+data_dir: /media/datasets/hm_semantic_maps/test
 
 data_collection:
   # init_pos: [-0, 0.0, -0]
@@ -68,8 +53,7 @@ data_collection:
   color_sensor: color_sensor
   depth_sensor: depth_sensor
   semantic_sensor: semantic_sensor
-  # saved_dir: ${log_dir}
 
 hydra:
   searchpath:
-    - ${oc.env:DIR_VSLAB_360_DATASETS_CFG}
+    - ${oc.env:HM3D_DATA_COLLECTOR_CFG_DIR}
