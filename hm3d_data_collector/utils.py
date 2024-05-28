@@ -1,7 +1,32 @@
 from pyquaternion import Quaternion
 import numpy as np
 from geometry_perception_utils.geometry_utils import extend_array_to_homogeneous
-# from dvf_map.ray_tracer.ray_tracer import RaysTracer
+from getch import getch
+
+set_actions = dict(
+    q='move_up',
+    c='move_down',
+    i='look_up',
+    k='look_down',
+    w='move_forward',
+    s='move_backward',
+    a='move_left',
+    d='move_right',
+    j='turn_left',
+    l='turn_right',
+)
+
+
+def get_action():
+    [print(f"\t####\tPress key '{k}' to move the agent '{m}'")
+    for k, m in set_actions.items()]
+    while True:
+        key = getch()
+        pressed = [m for k, m in set_actions.items() if k == key]
+        if pressed.__len__() > 0:
+            action = pressed[0]
+            break
+    return action
 
 
 def read_positions(fn):
@@ -27,11 +52,11 @@ def project_pp_depth(depth_map, mask=None, fov=140):
     """
     Projects depth maps into 3D considering only the pixels in the mask
     """
-    
+
     # bearing vectors
     h, w = depth_map.shape[:2]
     bearings = get_bearings(h, w, fov)
-    
+
     if mask is not None:
         m = mask.flatten() * depth_map.flatten() > 0.2
     else:
@@ -53,7 +78,7 @@ def get_cam_pose(position):
     cam_pose[:3, 3] = position[:3]
     q = Quaternion(x=position[3], y=position[4], z=position[5], w=position[6])
     cam_pose[:3, :3] = q.rotation_matrix
-    return  cam_pose
+    return cam_pose
 
 
 def mask_semantics(img, id, color):
@@ -67,12 +92,11 @@ def project_xyz_to_lidar(xyz, ray_tracer, cfg):
     mask = np.abs(xyz[1, :] - cfg.offset_height) < cfg.slide_bandwidth
     if np.sum(mask) == 0:
         return None, False
-    
+
     xyz_lidar_slide = xyz[:, mask]
     xyz_lidar_rays = ray_tracer.project_on_rays(xyz_lidar_slide)
-    
+
     if xyz_lidar_rays.size == 0:
         return None, False
-    
-    return xyz_lidar_rays, True
 
+    return xyz_lidar_rays, True
