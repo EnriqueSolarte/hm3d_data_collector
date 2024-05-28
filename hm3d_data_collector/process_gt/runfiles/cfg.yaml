@@ -1,0 +1,55 @@
+
+defaults:
+  - general
+  - _self_
+
+log_dir: ${get_hydra_file_dirname:}/logs/${date}/${script}
+
+# data_dir: /media/Pluto/kike/canonical_map_ws/dvf_map/dvf_map/experiments/pre_process_hm/data_collection/logs/240308/data/pre_processed_hm
+# data_dir: /media/Pluto_tmp/kike/canonical_map_ws/collected_data/pilot_scenes
+data_dir: /media/datasets/hm_semantic_maps/pilot_scenes__obj_level
+
+excluded_semantics: ['ceiling', "wall", "frame", "rod", "unknown", "Unknown"]
+min_vxl_sem_map: 20
+hm_data:
+  scene: 00800-TEEsavR23oF
+  version: 0
+  saved_dir: ${data_dir}/${hm_data.scene}_${hm_data.version}
+  cfg: ${load:${hm_data.saved_dir}/cfg.yaml}
+  position_fn: ${hm_data.saved_dir}/hm_states.txt
+  gt_position_fn: ${hm_data.saved_dir}/gt_poses.txt
+  sem_map_ref: ${hm_data.saved_dir}/sem_map_ref.pkl
+  semantic_fn: ${hm_data.saved_dir}/semantics.txt
+  # semantic_fn: ${get_hydra_file_dirname:}/local_semantics.txt
+  rgb_dir: ${hm_data.saved_dir}/rgb
+  depth_dir: ${hm_data.saved_dir}/depth
+  semantic_dir: ${hm_data.saved_dir}/semantic
+  semantic_ratio: 0.01 # ratio of number voxel per frame to define an object
+  sensor_wc:
+    translation: [0.0, 0.0, 0.0]
+    rotation: [180, 0, 0]
+  lidar:
+    offset_height: -0.5
+    slide_bandwidth: 0.01
+    ray_tracer:
+      fov: ${hm_data.cfg.habitat.hfov}
+      number_of_rays: 64
+      max_norm_dist: 0.01
+      max_depth: 2.0
+      min_depth: 0.2
+
+
+voxel_grid_2d:
+  voxel_type: voxel_grid_2d
+  grid_size: 0.05
+  padding: 10
+
+voxel_grid_3d:
+  voxel_type: voxel_grid_3d
+  grid_size: 0.05
+  padding: 10
+  
+hydra:
+  searchpath:
+    - ${oc.env:DVF_MAP_CFG_DIR}
+    

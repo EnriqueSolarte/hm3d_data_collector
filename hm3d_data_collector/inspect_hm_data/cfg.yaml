@@ -1,0 +1,63 @@
+
+
+defaults:
+  - general
+  - _self_
+
+habitat:
+  dataset_dir: /media/public_dataset/habitat/v0.2
+  list_sub_dir:
+    - train
+    - val
+    - minival
+  
+
+hydra:
+  searchpath:
+    - ${oc.env:DVF_MAP_CFG_DIR}
+
+
+log_dir: ${get_hydra_file_dirname:}/logs/${date}/${script}
+
+data_dir: /media/Pluto_tmp/kike/canonical_map_ws/collected_data/pilot_scenes
+
+scene_name: 00808-y9hTuugGdiq
+scene_version: 0
+
+hm_data:
+  scene: ${scene_name}
+  version: ${scene_version}
+  saved_dir: ${data_dir}/${hm_data.scene}_${hm_data.version}
+  cfg: ${load:${hm_data.saved_dir}/cfg.yaml}
+  position_fn: ${hm_data.saved_dir}/hm_states.txt
+  gt_position_fn: ${hm_data.saved_dir}/gt_poses.txt
+  sem_map_ref: ${hm_data.saved_dir}/sem_map_ref.pkl
+  semantic_fn: ${hm_data.saved_dir}/semantics.txt
+  # semantic_fn: ${get_hydra_file_dirname:}/local_semantics.txt
+  rgb_dir: ${hm_data.saved_dir}/rgb
+  depth_dir: ${hm_data.saved_dir}/depth
+  semantic_dir: ${hm_data.saved_dir}/semantic
+  stable_semantic_ratio: 0.05
+  sensor_wc:
+    translation: [0.0, 0.0, 0.0]
+    rotation: [180, 0, 0]
+  lidar:
+    offset_height: -0.5
+    slide_bandwidth: 0.01
+    ray_tracer:
+      fov: ${hm_data.cfg.habitat.hfov}
+      number_of_rays: 64
+      max_norm_dist: 0.01
+      max_depth: 2.0
+      min_depth: 0.2
+
+voxel_grid_2d:
+  voxel_type: voxel_grid_2d
+  grid_size: 0.01
+  padding: 10
+
+voxel_grid_3d:
+  voxel_type: voxel_grid_3d
+  grid_size: 0.01
+  padding: 10
+  
