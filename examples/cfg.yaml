@@ -1,0 +1,21 @@
+
+
+hydra:
+  searchpath:
+    - ${oc.env:HM3D_DATA_COLLECTOR_CFG_DIR}
+    
+defaults:
+  - general
+  - habitat_sim
+  - data_collection
+  - process_gt
+  - _self_
+
+hm_split: val
+hm_idx_scene: 00815
+hm_scene_name: h1zeeAwLh9Z 
+hm_data_version: 0
+
+data_dir: /media/datasets/hm_semantic_maps/test
+log_dir: ${get_hydra_file_dirname:}/logs/${script}/${date}
+
