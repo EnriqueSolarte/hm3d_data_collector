@@ -18,7 +18,7 @@ set_actions = dict(
 
 
 def get_action():
-    [print(f"\t####\tPress key '{k}' to move the agent '{m}'")
+    [print(f"\t|\tPress key '{k}' to move the agent '{m}'")
     for k, m in set_actions.items()]
     while True:
         key = getch()
