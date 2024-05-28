@@ -7,6 +7,7 @@ import numpy as np
 from imageio import imwrite
 import logging
 from geometry_perception_utils.io_utils import get_abs_path, create_directory
+from geometry_perception_utils.config_utils import save_cfg
 
 
 @hydra.main(version_base=None,
@@ -14,7 +15,7 @@ from geometry_perception_utils.io_utils import get_abs_path, create_directory
             config_name="cfg.yaml")
 def main(cfg):
     logging.warning(f"running: {cfg.script}")
-
+    # save_cfg(cfg)
     habitat_cfg = get_habitat_cfg(cfg.habitat)
 
     sim = Simulator(habitat_cfg)

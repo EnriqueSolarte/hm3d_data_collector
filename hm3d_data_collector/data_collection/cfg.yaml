@@ -31,8 +31,9 @@ default_actions:
   move_right: 0.25
   turn_left: 10.0
   turn_right: 10.0
-  
-log_dir: ${get_hydra_file_dirname:}/logs/${date}
+
+
+log_dir: ${data_dir}/logs/${script}/${date}
 
 data_dir: /media/datasets/hm_semantic_maps/test
 

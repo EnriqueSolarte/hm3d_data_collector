@@ -5,12 +5,20 @@ defaults:
 
 log_dir: ${get_hydra_file_dirname:}/logs/${date}/${script}
 
-# data_dir: /media/Pluto/kike/canonical_map_ws/dvf_map/dvf_map/experiments/pre_process_hm/data_collection/logs/240308/data/pre_processed_hm
-data_dir: /media/Pluto_tmp/kike/canonical_map_ws/collected_data/pilot_scenes
+data_dir: /media/datasets/hm_semantic_maps/test
+
+excluded_semantics: ['ceiling', "wall", "frame", "rod", "unknown", "Unknown"]
+min_vxl_sem_map: 20
+
+hm_split: val
+hm_idx_scene: 00815
+hm_scene_name: h1zeeAwLh9Z 
+hm_data_version: 1
+
 
 hm_data:
-  scene: 00800-TEEsavR23oF
-  version: 0
+  scene: ${hm_idx_scene}-${hm_scene_name}
+  version: ${hm_data_version}
   saved_dir: ${data_dir}/${hm_data.scene}_${hm_data.version}
   cfg: ${load:${hm_data.saved_dir}/cfg.yaml}
   position_fn: ${hm_data.saved_dir}/hm_states.txt
@@ -21,6 +29,7 @@ hm_data:
   rgb_dir: ${hm_data.saved_dir}/rgb
   depth_dir: ${hm_data.saved_dir}/depth
   semantic_dir: ${hm_data.saved_dir}/semantic
+  semantic_ratio: 0.01 # ratio of number voxel per frame to define an object
   sensor_wc:
     translation: [0.0, 0.0, 0.0]
     rotation: [180, 0, 0]
@@ -37,16 +46,14 @@ hm_data:
 
 voxel_grid_2d:
   voxel_type: voxel_grid_2d
-  grid_size: 0.01
+  grid_size: 0.05
   padding: 10
 
 voxel_grid_3d:
   voxel_type: voxel_grid_3d
-  grid_size: 0.01
+  grid_size: 0.05
   padding: 10
   
-
 hydra:
   searchpath:
-    - ${oc.env:DVF_MAP_CFG_DIR}
-    
+    - ${oc.env:HM3D_DATA_COLLECTOR_CFG_DIR}

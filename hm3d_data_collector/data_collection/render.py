@@ -1,12 +1,9 @@
-import yaml
-import os
 import hydra
 from vslab_360_datasets.wrapper_habitat_sim.utils import get_habitat_cfg
 from habitat_sim import Simulator
 import habitat_sim
 import numpy as np
 from imageio import imwrite
-import matplotlib.pyplot as plt
 import logging  
 from geometry_perception_utils.config_utils import save_cfg
 from geometry_perception_utils.io_utils import get_abs_path, create_directory, save_json_dict
@@ -121,7 +118,6 @@ def render(cfg):
     
     save_semantics(cfg, sim, list_semantic_ids)
     fn = f"{cfg.data_collection.cfg_fn}"
-    OmegaConf.resolve(cfg)
     save_cfg(cfg, cfg_file=fn)
     
 
