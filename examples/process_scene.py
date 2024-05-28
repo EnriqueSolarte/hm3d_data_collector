@@ -7,8 +7,7 @@ from hm3d_data_collector.process_gt import process_scene
             config_path=get_abs_path(__file__),
             config_name="cfg.yaml")
 def main(cfg):
-    collected_scene = f"{cfg.hm_idx_scene}-{cfg.hm_scene_name}_{cfg.hm_data_version}"         
-    process_scene(cfg, collected_scene)
+    process_scene(cfg)
 
 
 if __name__ == "__main__":

@@ -45,8 +45,9 @@ def prune_sematic_instances(cfg, sem_map):
     return {'bins': sem_map['bins'], 'sem_map': sem_pruned}
 
 
-def process_scene(cfg, scene):
-    sem_map = load_saved_semantic_map(cfg, scene)
+def process_scene(cfg):
+    collected_scene = f"{cfg.hm_idx_scene}-{cfg.hm_scene_name}_{cfg.hm_data_version}"         
+    sem_map = load_saved_semantic_map(cfg, collected_scene)
     sem_map_pruned = prune_sematic_instances(cfg, sem_map)
     fn = f"{cfg.hm_data.saved_dir}/semantic_map_pruned.map"
     save_obj(filename=fn, obj=sem_map_pruned)
@@ -60,8 +61,13 @@ def main(cfg):
     logging.warning(f"running: {cfg.script}")
     list_scenes_dir = os.listdir(cfg.data_dir)
     # Loop for all scene defined in the data_dir
-    for scene in list_scenes_dir:
-        process_scene(cfg, scene)
+    for render_target_scene in list_scenes_dir:
+        logging.info(f"Rendering scene {render_target_scene}")
+        cfg.hm_idx_scene = render_target_scene.split('-')[0]
+        cfg.hm_scene_name = render_target_scene.split('-')[1].split('_')[0]
+        cfg.hm_data_version = render_target_scene.split('-')[1].split('_')[-1]
+        process_scene(cfg)
+        logging.info(f"Scene finished {render_target_scene}")
 
 
 if __name__ == "__main__":
