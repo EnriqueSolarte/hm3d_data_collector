@@ -1,0 +1,36 @@
+{
+	"root": "/media/public_dataset/habitat/v0.2/minival",
+	"list_scenes_basis": {
+		"TEEsavR23oF": "00800-TEEsavR23oF/TEEsavR23oF.basis.glb",
+		"HaxA7YrQdEC": "00801-HaxA7YrQdEC/HaxA7YrQdEC.basis.glb",
+		"wcojb4TFT35": "00802-wcojb4TFT35/wcojb4TFT35.basis.glb",
+		"k1cupFYWXJ6": "00803-k1cupFYWXJ6/k1cupFYWXJ6.basis.glb",
+		"BHXhpBwSMLh": "00804-BHXhpBwSMLh/BHXhpBwSMLh.basis.glb",
+		"SUHsP6z2gcJ": "00805-SUHsP6z2gcJ/SUHsP6z2gcJ.basis.glb",
+		"tQ5s4ShP627": "00806-tQ5s4ShP627/tQ5s4ShP627.basis.glb",
+		"rsggHU7g7dh": "00807-rsggHU7g7dh/rsggHU7g7dh.basis.glb",
+		"y9hTuugGdiq": "00808-y9hTuugGdiq/y9hTuugGdiq.basis.glb",
+		"Qpor2mEya8F": "00809-Qpor2mEya8F/Qpor2mEya8F.basis.glb"
+	},
+	"list_scenes_glb": {
+		"TEEsavR23oF": "00800-TEEsavR23oF/TEEsavR23oF.semantic.glb",
+		"HaxA7YrQdEC": "00801-HaxA7YrQdEC/HaxA7YrQdEC.basis.glb",
+		"wcojb4TFT35": "00802-wcojb4TFT35/wcojb4TFT35.semantic.glb",
+		"k1cupFYWXJ6": "00803-k1cupFYWXJ6/k1cupFYWXJ6.semantic.glb",
+		"BHXhpBwSMLh": "00804-BHXhpBwSMLh/BHXhpBwSMLh.basis.glb",
+		"SUHsP6z2gcJ": "00805-SUHsP6z2gcJ/SUHsP6z2gcJ.basis.glb",
+		"tQ5s4ShP627": "00806-tQ5s4ShP627/tQ5s4ShP627.basis.glb",
+		"rsggHU7g7dh": "00807-rsggHU7g7dh/rsggHU7g7dh.basis.glb",
+		"y9hTuugGdiq": "00808-y9hTuugGdiq/y9hTuugGdiq.semantic.glb",
+		"Qpor2mEya8F": "00809-Qpor2mEya8F/Qpor2mEya8F.basis.glb"
+	},
+	"list_scenes_semantic": {
+		"TEEsavR23oF": "00800-TEEsavR23oF/TEEsavR23oF.semantic.glb",
+		"wcojb4TFT35": "00802-wcojb4TFT35/wcojb4TFT35.semantic.glb",
+		"k1cupFYWXJ6": "00803-k1cupFYWXJ6/k1cupFYWXJ6.semantic.glb",
+		"y9hTuugGdiq": "00808-y9hTuugGdiq/y9hTuugGdiq.semantic.glb"
+	},
+	"scenes_basis": 10,
+	"scenes_glb": 10,
+	"scenes_semantic": 4
+}

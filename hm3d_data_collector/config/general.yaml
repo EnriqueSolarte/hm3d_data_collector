@@ -1,0 +1,10 @@
+
+log_dir: ${get_hydra_file_dirname:}/${script}/${date}
+
+hydra:
+  run:
+    dir: ${log_dir}
+
+script: ${hydra:job.name}
+date: ${now:%y%m%d}
+time: ${now:%H%M%S}
