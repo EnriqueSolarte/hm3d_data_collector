@@ -13,7 +13,6 @@ __pycache__/
 *logs/
 *ckpt/
 *.egg-info
-assets/
 *tmp*
 result/
 outputs/
