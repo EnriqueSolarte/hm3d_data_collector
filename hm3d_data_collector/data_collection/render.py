@@ -1,14 +1,14 @@
 import hydra
-from vslab_360_datasets.wrapper_habitat_sim.utils import get_habitat_cfg
+from hm3d_data_collector.utils.habitat_sim_utils import get_habitat_cfg
 from habitat_sim import Simulator
 import habitat_sim
 import numpy as np
 from imageio import imwrite
 import logging
-from geometry_perception_utils.config_utils import save_cfg
-from geometry_perception_utils.io_utils import get_abs_path, create_directory, save_json_dict
-from geometry_perception_utils.geometry_utils import extend_array_to_homogeneous, eulerAnglesToRotationMatrix
-from dvf_map.experiments.pre_process_hm.utils import project_pp_depth, get_cam_pose
+from hm3d_data_collector.utils.config_utils import save_cfg
+from hm3d_data_collector.utils.io_utils import get_abs_path, create_directory, save_json_dict
+from hm3d_data_collector.utils.geometry_utils import extend_array_to_homogeneous, eulerAnglesToRotationMatrix
+from hm3d_data_collector.utils.data_collection_utils import project_pp_depth, get_cam_pose
 from pyquaternion import Quaternion
 from omegaconf import OmegaConf, open_dict
 import os

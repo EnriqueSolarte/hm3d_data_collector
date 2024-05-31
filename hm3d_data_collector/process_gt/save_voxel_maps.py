@@ -2,12 +2,12 @@ import hm3d_data_collector
 import hydra
 import numpy as np
 import logging
-from geometry_perception_utils.io_utils import get_abs_path, create_directory
+from hm3d_data_collector.utils.io_utils import get_abs_path, create_directory
 import os
 import pandas as pd
-from geometry_perception_utils.geometry_utils import extend_array_to_homogeneous, eulerAnglesToRotationMatrix
+from hm3d_data_collector.utils.geometry_utils import extend_array_to_homogeneous, eulerAnglesToRotationMatrix
 from tqdm import trange
-from hm3d_data_collector.utils import read_positions, project_pp_depth, get_cam_pose
+from hm3d_data_collector.utils.data_collection_utils import read_positions, project_pp_depth, get_cam_pose
 from hm3d_data_collector.dense_voxel_grid.voxel_grid_2d import VoxelGrid2D
 from hm3d_data_collector.dense_voxel_grid.voxel_grid_3d import VoxelGrid3D
 

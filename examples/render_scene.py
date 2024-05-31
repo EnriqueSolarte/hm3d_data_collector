@@ -1,5 +1,5 @@
 import hydra
-from geometry_perception_utils.io_utils import get_abs_path
+from hm3d_data_collector.utils.io_utils import get_abs_path
 from hm3d_data_collector.data_collection import render_data
 
 

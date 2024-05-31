@@ -2,18 +2,18 @@ import hm3d_data_collector
 import hydra
 import numpy as np
 import logging
-from geometry_perception_utils.io_utils import get_abs_path
+from hm3d_data_collector.utils.io_utils import get_abs_path
 import os
 import pandas as pd
-from geometry_perception_utils.geometry_utils import extend_array_to_homogeneous
-from geometry_perception_utils.image_utils import get_color_array
+from hm3d_data_collector.utils.geometry_utils import extend_array_to_homogeneous
+from hm3d_data_collector.utils.image_utils import get_color_array
 from tqdm import trange
-from hm3d_data_collector.utils import read_positions, project_pp_depth, get_cam_pose
+from hm3d_data_collector.utils.data_collection_utils import read_positions, project_pp_depth, get_cam_pose
 from hm3d_data_collector.utils import project_pp_depth, get_cam_pose
 from hm3d_data_collector.dense_voxel_grid.voxel_grid_2d import VoxelGrid2D
 from hm3d_data_collector.dense_voxel_grid.voxel_grid_3d import VoxelGrid3D
-from geometry_perception_utils.image_utils import get_color_array, get_color_list, get_default_uv_map
-from geometry_perception_utils.io_utils import save_obj, load_obj
+from hm3d_data_collector.utils.image_utils import get_color_array, get_color_list, get_default_uv_map
+from hm3d_data_collector.utils.io_utils import save_obj, load_obj
 from hm3d_data_collector.process_gt.save_voxel_maps import create_voxel_maps
 
 

@@ -2,10 +2,10 @@ import hm3d_data_collector
 import hydra
 import matplotlib.pyplot as plt
 import logging
-from geometry_perception_utils.io_utils import get_abs_path, create_directory
+from hm3d_data_collector.utils.io_utils import get_abs_path, create_directory
 import os
-from dvf_map.dense_voxel_grid.voxel_grid_3d import VoxelGrid3D
-from geometry_perception_utils.io_utils import save_obj, load_obj
+from hm3d_data_collector.dense_voxel_grid.voxel_grid_3d import VoxelGrid3D
+from hm3d_data_collector.utils.io_utils import save_obj, load_obj
 
 
 def get_semantic_map(cfg, scene):

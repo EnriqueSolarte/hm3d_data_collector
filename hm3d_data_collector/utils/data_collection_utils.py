@@ -1,6 +1,6 @@
 from pyquaternion import Quaternion
 import numpy as np
-from geometry_perception_utils.geometry_utils import extend_array_to_homogeneous
+from hm3d_data_collector.utils.geometry_utils import extend_array_to_homogeneous
 from getch import getch
 
 set_actions = dict(
@@ -19,7 +19,7 @@ set_actions = dict(
 
 def get_action():
     [print(f"\t|\tPress key '{k}' to move the agent '{m}'")
-    for k, m in set_actions.items()]
+     for k, m in set_actions.items()]
     while True:
         key = getch()
         pressed = [m for k, m in set_actions.items() if k == key]

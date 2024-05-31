@@ -1,7 +1,7 @@
 import hm3d_data_collector
 import hydra
 import logging
-from geometry_perception_utils.io_utils import get_abs_path, create_directory, save_json_dict
+from hm3d_data_collector.utils.io_utils import get_abs_path, create_directory, save_json_dict
 from hm3d_data_collector.data_collection.render import render
 
 

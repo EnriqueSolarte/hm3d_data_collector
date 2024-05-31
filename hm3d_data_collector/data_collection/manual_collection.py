@@ -1,13 +1,13 @@
-from hm3d_data_collector.utils import get_action
+from hm3d_data_collector.utils.data_collection_utils import get_action
 import hydra
-from vslab_360_datasets.wrapper_habitat_sim.utils import get_habitat_cfg
+from hm3d_data_collector.utils.habitat_sim_utils import get_habitat_cfg
 from habitat_sim import Simulator
 import habitat_sim
 import numpy as np
 from imageio import imwrite
 import logging
-from geometry_perception_utils.io_utils import get_abs_path, create_directory
-from geometry_perception_utils.config_utils import save_cfg
+from hm3d_data_collector.utils.io_utils import get_abs_path, create_directory
+from hm3d_data_collector.utils.config_utils import save_cfg
 
 
 @hydra.main(version_base=None,

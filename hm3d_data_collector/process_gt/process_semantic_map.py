@@ -1,10 +1,10 @@
 import hm3d_data_collector
 import hydra
 import logging
-from geometry_perception_utils.config_utils import save_cfg
-from geometry_perception_utils.io_utils import get_abs_path, create_directory
+from hm3d_data_collector.utils.config_utils import save_cfg
+from hm3d_data_collector.utils.io_utils import get_abs_path, create_directory
 import os
-from geometry_perception_utils.io_utils import save_obj, load_obj
+from hm3d_data_collector.utils.io_utils import save_obj, load_obj
 from hm3d_data_collector.process_gt.save_semantic_map import get_semantic_map
 
 

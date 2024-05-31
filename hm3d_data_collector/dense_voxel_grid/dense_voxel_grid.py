@@ -4,6 +4,7 @@ Implementation based on pyntcloud
 https://github.com/daavoo/pyntcloud
 """
 
+
 def cartesian(arrays, out=None):
     """Generate a cartesian product of input arrays.
 
@@ -52,7 +53,8 @@ def cartesian(arrays, out=None):
 
     return out
 
-class DenseVoxelGrid:  
+
+class DenseVoxelGrid:
 
     def __repr__(self):
         default = dict(
@@ -62,25 +64,25 @@ class DenseVoxelGrid:
             xyz_max=self.xyz_max,
             xyz_min=self.xyz_min,
         )
-        
+
         caption = [f"* {self.__class__.__name__}"]
         caption += [f"{k}: {v}" for k, v in default.items()]
         return "\n\t * ".join(caption)
-    
+
     def __init__(self,
                  points,
-                 grid_size=0.01, 
+                 grid_size=0.01,
                  keep_points=False
                  ):
         """Grid of voxels.
         Parameters
         ----------
         points: (N, 3) numpy.array
-        """        
+        """
 
         self.x_y_z = np.asarray([1, 1, 1])
         self.sizes = np.asarray([grid_size, grid_size, grid_size])
-        
+
         self.xyz_min, self.xyz_max = None, None
         self.segments = None
         self.shape = None
@@ -104,7 +106,7 @@ class DenseVoxelGrid:
         xyz_min = xyz_min - margin / 2
         xyz_max = xyz_max + margin / 2
 
-        for n, size in enumerate(self.sizes): 
+        for n, size in enumerate(self.sizes):
             margin = (((xyz_range[n] // size) + 1) * size) - xyz_range[n]
             xyz_min[n] -= margin / 2
             xyz_max[n] += margin / 2
@@ -127,27 +129,31 @@ class DenseVoxelGrid:
         self.segments = segments
 
         self.n_voxels = np.prod(self.x_y_z)
-        
+
         self.id = "V({},{})".format(self.x_y_z, self.sizes)
-        
+
         self.shape = tuple(self.x_y_z)
         # find where each point lies in corresponding segmented axis
         # -1 so index are 0-based; clip for edge cases
-        self.voxel_x = np.clip(np.searchsorted(self.segments[0], points[:, 0]), 0, self.x_y_z[0]-1)
-        self.voxel_y = np.clip(np.searchsorted(self.segments[1], points[:, 1]), 0, self.x_y_z[1]-1)
-        self.voxel_z = np.clip(np.searchsorted(self.segments[2], points[:, 2]), 0,  self.x_y_z[2]-1)
-        self.voxel_n = np.ravel_multi_index([self.voxel_x, self.voxel_y, self.voxel_z], self.x_y_z)
+        self.voxel_x = np.clip(np.searchsorted(
+            self.segments[0], points[:, 0]), 0, self.x_y_z[0]-1)
+        self.voxel_y = np.clip(np.searchsorted(
+            self.segments[1], points[:, 1]), 0, self.x_y_z[1]-1)
+        self.voxel_z = np.clip(np.searchsorted(
+            self.segments[2], points[:, 2]), 0,  self.x_y_z[2]-1)
+        self.voxel_n = np.ravel_multi_index(
+            [self.voxel_x, self.voxel_y, self.voxel_z], self.x_y_z)
 
         # compute center of each voxel
-        mid_segments = [(self.segments[i][1:] + self.segments[i][:-1]) / 2 for i in range(3)]
+        mid_segments = [
+            (self.segments[i][1:] + self.segments[i][:-1]) / 2 for i in range(3)]
         self.voxel_centers = cartesian(mid_segments).astype(np.float32)
-        
-        
+
     def query_idx(self, points):
         """Query the voxel grid indexes given the passed points.
         """
         assert points.shape[1] == 3, "points.shape[1] != 3"
-        
+
         voxel_x = np.clip(np.searchsorted(
             self.segments[0], points[:, 0]), 0, self.x_y_z[0]-1)
         voxel_y = np.clip(np.searchsorted(
@@ -161,33 +167,33 @@ class DenseVoxelGrid:
         """Query the voxel grid centers given the passed points.
         """
         assert points.shape[1] == 3, "points.shape[1] != 3"
-        
+
         indexes = self.query_idx(points)
         indexes = np.unique(indexes)
         return self.voxel_centers[indexes]
-    
-    
+
+
 if __name__ == '__main__':
-    import os 
+    import os
     from pathlib import Path
     from geometry_perception_utils.vispy_utils import plot_list_pcl
-    
+
     # * Load data sample (point cloud)
     root = os.path.dirname(__file__)
-    point_cloud_path = Path(f'{root}/samples/bunnyStatue.txt').resolve().__str__()
+    point_cloud_path = Path(
+        f'{root}/samples/bunnyStatue.txt').resolve().__str__()
     point_cloud = np.loadtxt(point_cloud_path, delimiter=' ')
-    
-    points = point_cloud[:,:3]
-    colors = point_cloud[:,3:6]
-    normals = point_cloud[:,6:]
-    
+
+    points = point_cloud[:, :3]
+    colors = point_cloud[:, 3:6]
+    normals = point_cloud[:, 6:]
+
     print("points.shape: ", points.shape)
     print("colors.shape: ", colors.shape)
     print("normals.shape: ", normals.shape)
-    
+
     # * Create a voxel grid
     voxel_grid = DenseVoxelGrid(points)
     print("voxel_grid.id: ", voxel_grid.id)
     print("voxel_grid.shape: ", voxel_grid.shape)
     print(voxel_grid)
-
