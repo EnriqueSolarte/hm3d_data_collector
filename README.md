@@ -9,7 +9,7 @@ conda create -n hm3d_collector python=3.9
 conda activate hm3d_collector
 ```
 
-#### 2. Clone the repository and install it as python library
+#### 2. Clone and install the repository as a python library
 ```bash
 git clone git@github.com:EnriqueSolarte/hm3d_data_collector.git
 
@@ -20,7 +20,7 @@ pip install . #for production
 ```
 
 #### 3. Install habitat-sim
-This is the most tedious part of the installation. Please follow the instructions in the [habitat-sim repository](https://arc.net/l/quote/qolneuio). 
+This is the most tedious part of the installation. If the following command does not work, please follow the instructions in the [habitat-sim repository](https://arc.net/l/quote/qolneuio). 
 
 ```bash
 conda install habitat-sim -c conda-forge -c aihabitat
@@ -35,3 +35,27 @@ This repository uses the [hm3d dataset](https://aihabitat.org/datasets/hm3d/) re
 Please contact me at for request access to this data. `enrique.solarte.pardo@itri.org.tw`
 
 ## How to use it
+
+All the scenes that content semantic data are listed at `./examples/list_scenes.json`. Example:
+```json
+{   ...
+	"minival": {
+		"00800-TEEsavR23oF": "00800-TEEsavR23oF/TEEsavR23oF.semantic.glb",
+		"00802-wcojb4TFT35": "00802-wcojb4TFT35/wcojb4TFT35.semantic.glb",
+		"00803-k1cupFYWXJ6": "00803-k1cupFYWXJ6/k1cupFYWXJ6.semantic.glb",
+		"00808-y9hTuugGdiq": "00808-y9hTuugGdiq/y9hTuugGdiq.semantic.glb"
+	}
+    ...
+}
+```
+These format is used only to refer the dataset split name, scene name and idx of the scene. For instance. 
+```yaml
+hm_split: minival
+hm_idx_scene: 00800
+hm_scene_name: TEEsavR23oF 
+```
+This information can be manually put in the `./examples/cfg.yaml` file or passed by command line by terminal as follows:
+
+```bash
+python examples/collect_data.py hm_split=minival hm_idx_scene=00800 hm_scene_name=TEEsavR23oF
+```
