@@ -48,7 +48,7 @@ All the scenes that content semantic data are listed at `./examples/list_scenes.
     ...
 }
 ```
-These format is used only to refer the dataset split name, scene name and idx of the scene. For instance. 
+This format is used only to refer the dataset split name, scene name and idx of the scene. For instance. 
 ```yaml
 hm_split: minival
 hm_idx_scene: 00800
@@ -57,5 +57,51 @@ hm_scene_name: TEEsavR23oF
 This information can be manually put in the `./examples/cfg.yaml` file or passed by command line as follows:
 
 ```shell
-python examples/collect_data.py hm_split=minival hm_idx_scene=00800 hm_scene_name=TEEsavR23oF
+python examples/collect_scene.py hm_split=minival hm_idx_scene=00800 hm_scene_name=TEEsavR23oF
 ```
+
+### Data versioning
+
+All the scenes in the data can be collected multiple times. Maybe we collected different rooms, or each time a different path is used. To keep track of this, we can use the `hm_data_version` parameter in `./examples/cfg.yaml`. For instance, if we want to collect the above scene but with version `1`, we can use the following command:
+
+```shell
+python examples/collect_scene.py hm_split=minival hm_idx_scene=00800 hm_scene_name=TEEsavR23oF hm_data_version=1
+```
+We can also change the `hm_data_version` parameter manually in `./examples/cfg.yaml`
+
+```yaml
+...
+hm_split: minival
+hm_idx_scene: 00800
+hm_scene_name: TEEsavR23oF 
+hm_data_version: 1
+...
+```
+The directory for the collected data is defined by the `data_dir` parameter. The path to the raw data (HM3D) is defined in `hm3d_dir`. Both parameter can been set in the `./examples/cfg.yaml` file or pass them by command line.
+
+### Run scripts
+After setting the right parameters for a particular scene and version, you can run:
+
+```shel
+python collect_scene.py
+``` 
+Then, to render the scene, you can run:
+
+```shell
+python render_scene.py
+```
+To render all scenes in the directory `data_dir`, you can run:
+
+```shell
+python render_directory.py
+```
+
+To post-process the data, you can run:
+
+```shell
+python process_scene.py
+# or
+python process_directory.py
+```
+
+
