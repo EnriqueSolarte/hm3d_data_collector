@@ -32,7 +32,7 @@ This repository uses the [hm3d dataset](https://aihabitat.org/datasets/hm3d/) re
 ```
 /media/datasets/habitat/v0.2
 ```
-Please contact me at for request access to this data. `enrique.solarte.pardo@itri.org.tw`
+Please contact me at for get access to this data. `enrique.solarte.pardo@itri.org.tw`
 
 ## How to use it
 
@@ -54,8 +54,8 @@ hm_split: minival
 hm_idx_scene: 00800
 hm_scene_name: TEEsavR23oF 
 ```
-This information can be manually put in the `./examples/cfg.yaml` file or passed by command line by terminal as follows:
+This information can be manually put in the `./examples/cfg.yaml` file or passed by command line as follows:
 
-```bash
+```shell
 python examples/collect_data.py hm_split=minival hm_idx_scene=00800 hm_scene_name=TEEsavR23oF
 ```
