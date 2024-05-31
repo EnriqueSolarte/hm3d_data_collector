@@ -62,7 +62,7 @@ python examples/collect_scene.py hm_split=minival hm_idx_scene=00800 hm_scene_na
 
 ### Data versioning
 
-All of the scenes in the data can be collected multiple times. Maybe we want to collect different rooms, or each time a different path. To keep track of this, we can use the `hm_data_version` parameter in `./examples/cfg.yaml`. For instance, if we want to collect the above scene but with version `1`, we can use the following command:
+All scenes in the data can be collected multiple times. Maybe we want to collect different rooms, or each time a different path. To keep track of this, we can use the `hm_data_version` parameter in `./examples/cfg.yaml`. For instance, if we want to collect the above scene but with version `1`, we can use the following command:
 
 ```shell
 python examples/collect_scene.py hm_split=minival hm_idx_scene=00800 hm_scene_name=TEEsavR23oF hm_data_version=1
