@@ -1,4 +1,3 @@
-import dvf_map
 import hydra
 from hm3d_data_collector.utils.io_utils import get_abs_path
 from hm3d_data_collector.utils.vispy_utils import plot_list_pcl

@@ -9,7 +9,7 @@ from hm3d_data_collector.utils.geometry_utils import extend_array_to_homogeneous
 from hm3d_data_collector.utils.image_utils import get_color_array
 from tqdm import trange
 from hm3d_data_collector.utils.data_collection_utils import read_positions, project_pp_depth, get_cam_pose
-from hm3d_data_collector.utils import project_pp_depth, get_cam_pose
+from hm3d_data_collector.utils.data_collection_utils import project_pp_depth, get_cam_pose
 from hm3d_data_collector.dense_voxel_grid.voxel_grid_2d import VoxelGrid2D
 from hm3d_data_collector.dense_voxel_grid.voxel_grid_3d import VoxelGrid3D
 from hm3d_data_collector.utils.image_utils import get_color_array, get_color_list, get_default_uv_map

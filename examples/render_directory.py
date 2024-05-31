@@ -1,8 +1,6 @@
 import hydra
 from hm3d_data_collector.utils.io_utils import get_abs_path
 from hm3d_data_collector.data_collection import render_directory
-import logging
-import os
 
 
 @hydra.main(version_base=None,
