@@ -9,7 +9,7 @@ from hm3d_data_collector.utils.geometry_utils import extend_array_to_homogeneous
 from hm3d_data_collector.utils.image_utils import get_color_array
 from tqdm import trange
 from hm3d_data_collector.utils.data_collection_utils import read_positions, project_pp_depth, get_cam_pose
-from hm3d_data_collector.utils.data_collection_utils import project_pp_depth, get_cam_pose
+from hm3d_data_collector.utils.data_collection_utils import project_pp_depth, get_cam_pose #E
 from hm3d_data_collector.dense_voxel_grid.voxel_grid_2d import VoxelGrid2D
 from hm3d_data_collector.dense_voxel_grid.voxel_grid_3d import VoxelGrid3D
 from hm3d_data_collector.utils.image_utils import get_color_array, get_color_list, get_default_uv_map
@@ -71,13 +71,14 @@ def get_semantic_map(cfg, scene):
     fov = cfg.hm_data.cfg.habitat.hfov
     ratio = cfg.hm_data.semantic_ratio
     for idx in trange(len(positions)):
-        # for idx in trange(10):
         depth_map = np.load(f"{depth_dir}/{idx}.npy")
         semantics_map = np.load(f"{semantics_dir}/{idx}.npy")
         semantics_ids = get_color_array(semantics_map)[0]
 
         # xyz in CC (from depth map to Euclidean space)
-        dist_mask = depth_map < 3
+        dist_mask = np.bitwise_and(depth_map < 3, depth_map > 0.1)
+        if dist_mask.sum() == 0:
+            continue
         xyz_cc, xyz_mask = project_pp_depth(depth_map, fov=fov, mask=dist_mask)
 
         cam_pose = get_cam_pose(positions[idx])
