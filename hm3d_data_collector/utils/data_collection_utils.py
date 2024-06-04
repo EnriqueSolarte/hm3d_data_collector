@@ -48,7 +48,7 @@ def get_bearings(h, w, fov):
     return bearings
 
 
-def project_pp_depth(depth_map, mask=None, fov=140):
+def project_pp_depth(depth_map, mask=None, fov=140, min_depth=0.2):
     """
     Projects depth maps into 3D considering only the pixels in the mask
     """
@@ -58,9 +58,9 @@ def project_pp_depth(depth_map, mask=None, fov=140):
     bearings = get_bearings(h, w, fov)
 
     if mask is not None:
-        m = mask.flatten() * depth_map.flatten() > 0.2
+        m = mask.flatten()
     else:
-        m = depth_map.flatten() > 0.2
+        m = depth_map.flatten() > min_depth
     # m = depth_map.flatten() > 0.2
     # scale = depth_map.flatten()[m] /np.abs(bearings[0, m])
     xyz = depth_map.flatten()[m] * bearings[:, m]
