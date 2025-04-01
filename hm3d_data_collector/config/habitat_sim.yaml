@@ -4,7 +4,7 @@ defaults:
   - _self_
 
 hm3d_dir: /media/datasets/habitat/v0.2/
-data_dir: /media/datasets/hm_semantic_maps/data_collection_deafult
+data_dir: /media/datasets/hm_semantic_maps/data_collection_default
 
 hm_split: val
 hm_idx_scene: 00815
