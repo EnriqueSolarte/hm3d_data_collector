@@ -28,12 +28,10 @@ conda install habitat-sim -c conda-forge -c aihabitat
 
 #### 4. Download habitat-sim assets (dataset) to render the scenes
 
-This repository uses the [hm3d dataset](https://aihabitat.org/datasets/hm3d/) released in NeurIPS'21. For practical purposes within ITRI, we downloaded this data (for research purposes only) at:
+This repository uses the [hm3d dataset](https://aihabitat.org/datasets/hm3d/) released in NeurIPS'21. For practical purposes, you can assume that the data is stored at:
 ```
 /media/datasets/habitat/v0.2
 ```
-Please contact me at for get access to this data. `enrique.solarte.pardo@itri.org.tw`
-
 ## How to use it
 
 All the scenes that content semantic data are listed at `./examples/list_scenes.json`. Example:
@@ -62,7 +60,7 @@ python examples/collect_scene.py hm_split=minival hm_idx_scene=00800 hm_scene_na
 
 ### Data versioning
 
-All scenes in the data can be collected multiple times. Maybe we want to collect different rooms, or each time a different path. To keep track of this, we can use the `hm_data_version` parameter in `./examples/cfg.yaml`. For instance, if we want to collect the above scene but with version `1`, we can use the following command:
+All scenes can be collected multiple times. Maybe, you want to collect different rooms or use a different path each time. To keep track of these versions, you can use the `hm_data_version` parameter in `./examples/cfg.yaml`. For instance, if you want to collect a scene with version `1` use the following command:
 
 ```shell
 python examples/collect_scene.py hm_split=minival hm_idx_scene=00800 hm_scene_name=TEEsavR23oF hm_data_version=1
@@ -77,7 +75,7 @@ hm_scene_name: TEEsavR23oF
 hm_data_version: 1
 ...
 ```
-The directory for the collected data is defined by the `data_dir` parameter. The path to the raw data (HM3D) is defined in `hm3d_dir`. Both parameter can been set in the `./examples/cfg.yaml` file or pass them by command line.
+The directory for the collected data is defined by the `data_dir` parameter. The path to the raw data (HM3D) is defined in `hm3d_dir`. Both parameter can been set in the `./examples/cfg.yaml` file or passed as arguments in CLI.
 
 ### Run scripts
 After setting the right parameters for a particular scene and version, you can run:
