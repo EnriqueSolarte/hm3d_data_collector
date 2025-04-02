@@ -18,5 +18,5 @@ result/
 outputs/
 *.hydra/
 *logs/
-
+*build/
 *ckpt/

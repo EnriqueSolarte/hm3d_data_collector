@@ -8,6 +8,9 @@ setup(
     version="1.0",
     packages=find_packages(),
     install_requires=requirements,
+    package_data={
+        "hm3d_data_collector": ["config/**", "dense_voxel_grid/**", "data_collection/**"]
+    },
     author="Enrique Solarte",
     author_email="enrique.solarte.pardo@gmail.com",
     description=("This is data collector for HM3D dataset"),

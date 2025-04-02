@@ -1,16 +1,20 @@
-pandas
-dill
+# pyquaternion
+# GitPython
+# PyYAML
+# omegaconf
+# imageio
+# scipy
+# vispy
+# matplotlib
+# shapely
+# scikit-image
+# jinja2
+# typeguard
+# imageio-ffmpeg
+# numpy==1.26.4
 plyfile
-pyquaternion
-GitPython
-PyYAML
-omegaconf
-imageio
-scipy
-vispy
-matplotlib
-shapely
-pyransac3d
-scikit-image
 coolname
-opencv-python
+hydra-core
+getch
+tqdm
+pyquaternion

@@ -19,7 +19,7 @@ hm_idx_scene: '00020'
 hm_scene_name: XYyR54sxe6b 
 hm_data_version: 0
 
-data_dir: /media/datasets/hm_semantic_maps/on_collecting/elisa/${date}
+data_dir: ~/hm_data_collected/
 hm3d_dir: /media/datasets/habitat/v0.2/
 log_dir: ${get_hydra_file_dirname:}/logs/${script}/${date}
 

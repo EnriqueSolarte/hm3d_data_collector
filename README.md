@@ -9,7 +9,14 @@ conda create -n hm3d_collector python=3.9
 conda activate hm3d_collector
 ```
 
-#### 2. Clone and install the repository as a python library
+#### 2. Install habitat-sim
+This is the most tedious part of the installation. If the following command does not work, please follow the instructions in the [habitat-sim repository](https://arc.net/l/quote/qolneuio). 
+
+```bash
+conda install habitat-sim -c conda-forge -c aihabitat
+``` 
+
+#### 3. Clone and install the repository as a python library
 ```bash
 git clone git@github.com:EnriqueSolarte/hm3d_data_collector.git
 
@@ -18,13 +25,6 @@ cd hm3d_data_collector
 pip install -e . #for development
 pip install . #for production
 ```
-
-#### 3. Install habitat-sim
-This is the most tedious part of the installation. If the following command does not work, please follow the instructions in the [habitat-sim repository](https://arc.net/l/quote/qolneuio). 
-
-```bash
-conda install habitat-sim -c conda-forge -c aihabitat
-``` 
 
 #### 4. Download habitat-sim assets (dataset) to render the scenes
 
