@@ -3,15 +3,21 @@
 hydra:
   searchpath:
     - ${oc.env:HM3D_DATA_COLLECTOR_CFG_DIR}
-    
+    - ${oc.env:GEOM_UTILS_CFG_DIR}
+
 defaults:
-  - general
   - habitat_sim
-  - data_collection
-  - process_gt
+  - hm_data
+  - general
   - _self_
 
-data_collection:
+habitat:
+  width: 512
+  height: 512
+  hfov: 60
+  sensor_height: 1.0
+
+hm_data:
   init_pos: [0.0, 0.0, 0.0]
 
 hm_split: train
@@ -19,7 +25,16 @@ hm_idx_scene: '00020'
 hm_scene_name: XYyR54sxe6b 
 hm_data_version: 0
 
-data_dir: ~/hm_data_collected/
-hm3d_dir: /media/datasets/habitat/v0.2/
-log_dir: ${get_hydra_file_dirname:}/logs/${script}/${date}
+excluded_semantics: ['ceiling', "wall", "frame", "rod", "unknown", "Unknown"]
+min_vxl_sem_map: 20
 
+data_dir: ${get_hydra_dirname:}/logs/data_collected
+hm3d_dir: /media/datasets/habitat/v0.2/
+
+voxel_grid_2d:
+  grid_size: 0.01
+  padding: 10
+
+voxel_grid_3d:
+  grid_size: 0.01
+  padding: 10

@@ -1,0 +1,58 @@
+
+
+defaults:
+  - general
+  - habitat_sim
+  - _self_
+
+hm_split: val
+hm_idx_scene: 00815
+hm_scene_name: h1zeeAwLh9Z 
+hm_data_version: 1
+
+habitat:
+  scene: ${hm3d_dir}/${hm_split}/${hm_idx_scene}-${hm_scene_name}/${hm_scene_name}.basis.glb
+  scene_dataset_config_file: ${hm3d_dir}/${hm_split}/hm3d_annotated_${hm_split}_basis.scene_dataset_config.json
+  width: 512
+  height: 512
+  hfov: 90
+  sensor_height: 1.0
+  actions: ${default_actions}
+
+log_dir: ${hm_data.saved_dir}/logs/
+
+data_dir: ${oc.env:HOME}/hm_data_collection/${date}
+
+excluded_semantics: ['ceiling', "wall", "frame", "rod", "unknown", "Unknown"]
+min_vxl_sem_map: 20
+
+hm_data:
+  init_pos: [-0, 0.0, -0]
+  version: ${hm_data_version}
+  max_distance: 2.0
+  min_count_px_semantic: 500
+  saved_dir: ${data_dir}/${hm_idx_scene}-${hm_scene_name}_${hm_data.version}
+  hm_actions_fn: ${hm_data.saved_dir}/hm_actions.txt
+  poses_dir: ${hm_data.saved_dir}/poses
+  rgb_dir: ${hm_data.saved_dir}/rgb
+  depth_dir: ${hm_data.saved_dir}/depth
+  semantic_dir: ${hm_data.saved_dir}/semantic
+  semantic_fn: ${hm_data.saved_dir}/semantics.txt
+  cfg_fn: ${hm_data.saved_dir}/cfg.yaml
+  color_sensor: color_sensor
+  depth_sensor: depth_sensor
+  semantic_sensor: semantic_sensor
+
+voxel_grid_2d:
+  voxel_type: voxel_grid_2d
+  grid_size: 0.05
+  padding: 10
+
+voxel_grid_3d:
+  voxel_type: voxel_grid_3d
+  grid_size: 0.05
+  padding: 10
+  
+hydra:
+  searchpath:
+    - ${oc.env:GEOM_UTILS_CFG_DIR}

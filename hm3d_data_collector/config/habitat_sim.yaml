@@ -18,20 +18,21 @@ habitat:
   width: 1024
   height: 512
   hfov: 120
-  sensor_height: 1.0
+  sensor_height: 0.0
   enable_physics: False
+  agent_radius: 0
   # sensors
   color_sensor: True  
   depth_sensor: True
   semantic_sensor: True
-  ortho_rgba_sensor: True
-  ortho_depth_sensor: True
-  ortho_semantic_sensor: True
-  equirect_rgba_sensor: True
-  equirect_depth_sensor: True
-  equirect_semantic_sensor: True
-  fisheye_rgba_sensor: True
-  fisheye_depth_sensor: True
+  ortho_rgba_sensor: False
+  ortho_depth_sensor: False
+  ortho_semantic_sensor: False
+  equirect_rgba_sensor: False
+  equirect_depth_sensor: False
+  equirect_semantic_sensor: False
+  fisheye_rgba_sensor: False
+  fisheye_depth_sensor: False
   actions: ${default_actions}
 
 default_actions:

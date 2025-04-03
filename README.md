@@ -1,5 +1,7 @@
 # HM3D Data Collector
-#### This repository is the python implementation that: (1) accesses to habitat-sim, (2) allows the user to collect data, (3) renders data (different sensor modalities), and (4) post-processes the data.
+
+> **Note:** This repository is the python implementation that: (1) accesses to habitat-sim, (2) allows the user to collect data, and (3) renders data (different sensor modalities).
+
 ![Main GIF](assets/main.gif)
 ---
 ## Installation
@@ -10,11 +12,20 @@ conda activate hm3d_collector
 ```
 
 #### 2. Install habitat-sim
-This is the most tedious part of the installation. If the following command does not work, please follow the instructions in the [habitat-sim repository](https://arc.net/l/quote/qolneuio). 
-
+This is the most tedious part of the installation. 
 ```bash
 conda install habitat-sim -c conda-forge -c aihabitat
 ``` 
+If the above command does not work, try to install from source 
+
+```bash
+git clone --branch stable https://github.com/facebookresearch/habitat-sim.git
+cd habitat-sim
+pip install -r requirements.txt
+python setup.py install
+```
+If the above command does not work either , please check [habitat-sim repository](https://arc.net/l/quote/qolneuio) for help. 
+
 
 #### 3. Clone and install the repository as a python library
 ```bash
@@ -26,12 +37,23 @@ pip install -e . #for development
 pip install . #for production
 ```
 
+install geometry-utils-perception-utils
+```bash
+pip install git+https://github.com/EnriqueSolarte/geometry_perception_utils.git@latest
+```
+
 #### 4. Download habitat-sim assets (dataset) to render the scenes
 
 This repository uses the [hm3d dataset](https://aihabitat.org/datasets/hm3d/) released in NeurIPS'21. For practical purposes, you can assume that the data is stored at:
 ```
 /media/datasets/habitat/v0.2
 ```
+in the cofig file `./examples/cfg.yaml` you can set the path to the dataset. 
+
+```yaml
+hm3d_dir: /media/datasets/habitat/v0.2
+```
+
 ## How to use it
 
 All the scenes that content semantic data are listed at `./examples/list_scenes.json`. Example:
@@ -88,18 +110,12 @@ Then, to render the scene, you can run:
 ```shell
 python render_scene.py
 ```
-To render all scenes in the directory `data_dir`, you can run:
+To visualize the scene in 3D, you can run:
 
 ```shell
-python render_directory.py
+python visualize_scene.py
 ```
 
-To post-process the data, you can run:
-
-```shell
-python process_scene.py
-# or
-python process_directory.py
-```
+![scene GIF](assets/scene_3d.gif)
 
 
