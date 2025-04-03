@@ -38,7 +38,7 @@ pip install . #for production
 ```
 > 🚀 **Tip:** You can install this package using pip.
 ```bash
-pip install git+https://github.com/> EnriqueSolarte/hm3d_data_collector.git@latest
+pip install git+https://github.com/EnriqueSolarte/hm3d_data_collector.git@latest
 ```
 
 Install the geometry perception utils package. 
