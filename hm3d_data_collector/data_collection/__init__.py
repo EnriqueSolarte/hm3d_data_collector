@@ -1,3 +1,0 @@
-from hm3d_data_collector.data_collection.manual_collection import main as data_collection
-from hm3d_data_collector.data_collection.render import main as render_data
-from hm3d_data_collector.data_collection.render import render_directory 
