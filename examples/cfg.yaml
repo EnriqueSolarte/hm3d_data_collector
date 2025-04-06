@@ -6,9 +6,9 @@ hydra:
     - ${oc.env:GEOM_UTILS_CFG_DIR}
 
 defaults:
+  - general
   - habitat_sim
   - hm_data
-  - general
   - _self_
 
 habitat:
