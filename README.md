@@ -122,4 +122,27 @@ python visualize_scene.py
 
 ![scene GIF](assets/scene_3d.gif)
 
+## Usage with Docker
+### 1. Build the Docker image
+```bash
+git clone git@github.com:EnriqueSolarte/hm3d_data_collector.git
+cd hm3d_data_collector
+docker build -t hm3d_collector .
+```
+
+### 2. Run the Docker container
+```bash
+bash docker_run.sh
+```
+
+### 3. Run the scripts
+```bash
+# inside the container
+source hm3d_data_collector/setup.sh
+python hm3d_data_collector/examples/collect_scene.py hm_split=minival hm_idx_scene=00800 hm_scene_name=TEEsavR23oF
+python hm3d_data_collector/examples/render_scene.py
+python hm3d_data_collector/examples/visualize_scene.py
+```
+
+
 

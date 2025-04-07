@@ -19,7 +19,7 @@ hm_data:
   init_pos: [0.0, 0.0, 0.0]
 
 data_dir: ${get_hydra_dirname:}/logs/data_collected
-hm3d_dir: /datasets
+hm3d_dir: /media/datasets/habitat/v0.2/
 
 voxel_grid_2d:
   grid_size: 0.01

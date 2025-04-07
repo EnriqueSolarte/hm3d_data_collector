@@ -18,8 +18,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     pkg-config \
     wget \
     zip \
-    unzip &&\
-    fontconfig\
+    fontconfig \
+    unzip && \
     rm -rf /var/lib/apt/lists/*
     
 # Install conda
@@ -49,10 +49,13 @@ RUN /bin/bash -c ". activate habitat; cd habitat-sim; pip install -r requirement
 # RUN git clone --branch stable https://github.com/facebookresearch/habitat-lab.git
 # RUN /bin/bash -c ". activate habitat; cd habitat-lab; pip install -e habitat-lab/"
 
-# COPY dir 
-COPY . /hm3d_collector
-RUN /bin/bash -c ". activate habitat; cd /hm3d_collector; pip install -r requirements.txt; pip install ."
-
 # Silence habitat-sim logs
 ENV GLOG_minloglevel=2
 ENV MAGNUM_LOG="quiet"
+
+# COPY dir 
+# COPY . /hm3d_collector
+# RUN /bin/bash -c ". activate habitat; cd /hm3d_collector; pip install -r requirements.txt; pip install ."
+
+RUN git clone --branch stable https://github.com/EnriqueSolarte/hm3d_data_collector.git
+RUN /bin/bash -c ". activate habitat; cd hm3d_data_collector; pip install -r requirements.txt; pip install ."
