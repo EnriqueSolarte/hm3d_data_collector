@@ -127,7 +127,7 @@ python visualize_scene.py
 ```bash
 git clone git@github.com:EnriqueSolarte/hm3d_data_collector.git
 cd hm3d_data_collector
-docker build -t hm3d_collector .
+source docker_build.sh
 ```
 
 ### 2. Run the Docker container
