@@ -5,7 +5,7 @@ with open("./requirements.txt", "r") as f:
 
 setup(
     name="hm3d-data-collector",
-    version="2.0",
+    version="2.1",
     packages=find_packages(),
     install_requires=requirements,
     package_data={
