@@ -59,3 +59,26 @@ ENV MAGNUM_LOG="quiet"
 
 RUN git clone --branch stable https://github.com/EnriqueSolarte/hm3d_data_collector.git
 RUN /bin/bash -c ". activate habitat; cd hm3d_data_collector; pip install -r requirements.txt; pip install ."
+
+ARG USER=nobody
+ARG USERNAME=$USER-docker
+ARG USER_UID=1002
+ARG USER_GID=$USER_UID
+
+# Create a non-root user
+RUN groupadd --gid $USER_GID $USERNAME \
+  && useradd -s /bin/bash --uid $USER_UID --gid $USER_GID -m $USERNAME \
+  # Add sudo support for the non-root user
+  && apt-get update \
+  && apt-get install -y --no-install-recommends sudo \
+  && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME\
+  && chmod 0440 /etc/sudoers.d/$USERNAME \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY setup.sh etc/profile.d/init.sh
+RUN chmod +x /etc/profile.d/init.sh
+  
+USER $USERNAME
+# Set the default shell to bash
+ENV TERM=xterm-256color
+CMD ["bash", "-l"]
