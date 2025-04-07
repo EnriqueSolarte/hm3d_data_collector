@@ -1,9 +1,7 @@
-
-
 hydra:
   searchpath:
-    - ${oc.env:HM3D_DATA_COLLECTOR_CFG_DIR}
     - ${oc.env:GEOM_UTILS_CFG_DIR}
+    - ${oc.env:HM3D_DATA_COLLECTOR_CFG_DIR}
 
 defaults:
   - general
@@ -20,16 +18,8 @@ habitat:
 hm_data:
   init_pos: [0.0, 0.0, 0.0]
 
-hm_split: train
-hm_idx_scene: '00020'
-hm_scene_name: XYyR54sxe6b 
-hm_data_version: 0
-
-excluded_semantics: ['ceiling', "wall", "frame", "rod", "unknown", "Unknown"]
-min_vxl_sem_map: 20
-
 data_dir: ${get_hydra_dirname:}/logs/data_collected
-hm3d_dir: /media/datasets/habitat/v0.2/
+hm3d_dir: /datasets
 
 voxel_grid_2d:
   grid_size: 0.01
@@ -38,3 +28,11 @@ voxel_grid_2d:
 voxel_grid_3d:
   grid_size: 0.01
   padding: 10
+
+hm_split: train
+hm_idx_scene: '00020'
+hm_scene_name: XYyR54sxe6b
+hm_data_version: 0
+
+excluded_semantics: ['ceiling', "wall", "frame", "rod", "unknown", "Unknown"]
+min_vxl_sem_map: 20

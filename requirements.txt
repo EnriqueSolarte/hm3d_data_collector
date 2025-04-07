@@ -10,3 +10,5 @@ dill
 jinja2
 pandas
 vispy
+hydra-core
+geometry-perception-utils-dev @ git+https://github.com/EnriqueSolarte/geometry_perception_utils.git@latest
