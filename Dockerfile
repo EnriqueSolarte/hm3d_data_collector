@@ -81,4 +81,5 @@ RUN chmod +x /etc/profile.d/init.sh
 USER $USERNAME
 # Set the default shell to bash
 ENV TERM=xterm-256color
+ENV USER=$USERNAME
 CMD ["bash", "-l"]
