@@ -62,8 +62,8 @@ def manual_collection(cfg):
 
         agent_state = agent.get_state()
 
-        position = agent_state.sensor_states['color_sensor'].position
-        rotation = agent_state.sensor_states['color_sensor'].rotation
+        position = agent_state.sensor_states[color_sensor].position
+        rotation = agent_state.sensor_states[color_sensor].rotation
         logging.info(f"Action: {action}")
         logging.info(
             f"Agent state:\n\tposition: {position}\n\trotation: {rotation}")
