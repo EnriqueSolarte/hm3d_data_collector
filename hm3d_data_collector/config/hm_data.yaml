@@ -6,6 +6,7 @@ hm_data_version: 1
 
 hm_data:
   init_pos: [0.0, 0.0, 0.0]
+  init_rot: [1, 0, 0, 0]
   idx_scene: ${hm_idx_scene}
   scene: ${hm_scene_name}
   version: ${hm_data_version}

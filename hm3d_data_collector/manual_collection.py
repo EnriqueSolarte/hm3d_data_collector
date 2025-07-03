@@ -26,7 +26,10 @@ def manual_collection(cfg):
     # Set agent state
     agent_state = habitat_sim.AgentState()
     pos = np.array(cfg.hm_data.init_pos)
-    ori = np.quaternion(1, 0, 0, 0)
+    ori = np.quaternion(cfg.hm_data.init_rot[0], 
+                        cfg.hm_data.init_rot[1],
+                        cfg.hm_data.init_rot[2],
+                        cfg.hm_data.init_rot[3])
     agent_state.rotation = ori
     agent_state.position = pos
     agent.set_state(agent_state)
@@ -50,8 +53,9 @@ def manual_collection(cfg):
 
         # Save observations
         depth = 255 * depth / depth.max()
-        comb = np.vstack(
-            [img,  np.repeat(depth[:, :, None], 3, axis=-1)]).astype(np.uint8)
+        comb = img
+        # comb = np.vstack(
+        #     [img,  np.repeat(depth[:, :, None], 3, axis=-1)]).astype(np.uint8)
         # fn = f"{save_dir}/{idx}.jpg"
         fn = f"{save_dir}/visualization.jpg"
         imwrite(fn, comb)
