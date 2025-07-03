@@ -1,6 +1,17 @@
 # HM3D Data Collector
 
-> **Note:** This repository is the python implementation that: (1) accesses to habitat-sim, (2) allows the user to collect data, and (3) renders data (different sensor modalities).
+This repository is a python package/library that: (1) accesses to habitat-sim, (2) allows the user to collect data, and (3) renders data (different sensor modalities). The main purposes of this library is to pre-process [HM3D dataset](https://github.com/facebookresearch/habitat-sim.git) for pilot, quick, and offline experiments.
+
+## News and updates
+- **2025-07-03**: Updated to @v2.1.3
+	- Add initial position and orientation
+- **2025-04-16**: Updated to @v2.1.1
+	- Fix path in Dockerfile for setup script
+    - Reformatted `docker_run.sh` for better readability
+    - Fixed key access in `manual_collection.py` for sensor states
+- **2025-03-01**: Updated to @v2.0.0
+	- Added Docker container support 	
+- **2025-01-01**: Released to @v1.0.0
 
 ![Main GIF](assets/main.gif)
 ---
@@ -38,12 +49,12 @@ pip install . #for production
 ```
 > 🚀 **Tip:** You can install this package using pip.
 ```bash
-pip install git+https://github.com/EnriqueSolarte/hm3d_data_collector.git@latest
+pip install git+https://github.com/EnriqueSolarte/hm3d_data_collector.git@stable
 ```
 
 Install the geometry perception utils package. 
 ```bash
-pip install git+https://github.com/EnriqueSolarte/geometry_perception_utils.git@latest
+pip install git+https://github.com/EnriqueSolarte/geometry_perception_utils.git@stable
 ```
 
 #### 4. Download habitat-sim assets (dataset) to render the scenes
