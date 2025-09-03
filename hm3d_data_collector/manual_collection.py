@@ -9,10 +9,14 @@ import logging
 from geometry_perception_utils.io_utils import get_abs_path, create_directory
 from geometry_perception_utils.config_utils import save_cfg
 from hm3d_data_collector import HM3D_DATA_COLLECTOR_CFG_DIR
+from pathlib import Path
 
 
 def manual_collection(cfg):
     logging.warning(f"running: {cfg.script}")
+    if Path(cfg.hm_data.saved_dir).exists():
+        logging.warning(f"Directory {cfg.hm_data.saved_dir} already exists. It will be overwritten.")
+        input("Press Enter to continue or Ctrl+C to exit...")
     save_cfg(cfg, resolve=True)
     habitat_cfg = get_habitat_cfg(cfg.habitat)
 
@@ -26,7 +30,7 @@ def manual_collection(cfg):
     # Set agent state
     agent_state = habitat_sim.AgentState()
     pos = np.array(cfg.hm_data.init_pos)
-    ori = np.quaternion(cfg.hm_data.init_rot[0], 
+    ori = np.quaternion(cfg.hm_data.init_rot[0],
                         cfg.hm_data.init_rot[1],
                         cfg.hm_data.init_rot[2],
                         cfg.hm_data.init_rot[3])

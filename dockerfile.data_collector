@@ -1,0 +1,46 @@
+# Base image
+FROM habitat_lab:dev
+
+# Setup basic packages
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    curl \
+    vim \
+    nano \
+    ca-certificates \
+    libjpeg-dev \
+    libpng-dev \
+    libglfw3-dev \
+    libglm-dev \
+    libx11-dev \
+    libomp-dev \
+    libegl1-mesa-dev \
+    pkg-config \
+    wget \
+    zip \
+    fontconfig \
+    unzip \
+    libgl1-mesa-glx \
+    libegl1-mesa \
+    libxrandr2 \
+    libxss1 \
+    libxcursor1 \
+    libxcomposite1 \
+    libasound2 \
+    libxi6 \
+    libxtst6 \
+    libxcb-xinerama0 \
+    && rm -rf /var/lib/apt/lists/*
+        
+# Silence habitat-sim logs
+ENV GLOG_minloglevel=2
+ENV MAGNUM_LOG="quiet"
+
+# COPY dir 
+COPY . /hm3d_collector
+WORKDIR /hm3d_collector
+# RUN /bin/bash -c ". activate habitat; cd /hm3d_collector; pip install -r requirements.txt; pip install ."
+
+# RUN /bin/bash -c "cd /hm3d_collector; pip install -r requirements.txt; pip install -e ."
+

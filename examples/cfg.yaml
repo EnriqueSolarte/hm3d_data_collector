@@ -9,17 +9,20 @@ defaults:
   - hm_data
   - _self_
 
+user: kike
+
 habitat:
-  width: 512
-  height: 512
-  hfov: 60
+  width: 560
+  height: 560
+  hfov: 90
   sensor_height: 1.0
 
 hm_data:
-  init_pos: [0.0, 0.0, 0.0]
+  init_pos: [1.3492731  ,0.25945458 ,1.9171098 ]
+  init_rot: [1, 0, 0, 0]
 
-data_dir: ${get_hydra_dirname:}/logs/data_collected
-hm3d_dir: /media/datasets/habitat/v0.2/
+data_dir: /media/datasets/hm_semantic_maps/map_free_navigation/vlm_global_goal
+hm3d_dir: /media/datasets/habitat/data_bk/scene_datasets/hm3d
 
 voxel_grid_2d:
   grid_size: 0.01
@@ -30,8 +33,8 @@ voxel_grid_3d:
   padding: 10
 
 hm_split: train
-hm_idx_scene: '00020'
-hm_scene_name: XYyR54sxe6b
+hm_idx_scene: '00004'
+hm_scene_name: VqCaAuuoeWk
 hm_data_version: 0
 
 excluded_semantics: ['ceiling', "wall", "frame", "rod", "unknown", "Unknown"]

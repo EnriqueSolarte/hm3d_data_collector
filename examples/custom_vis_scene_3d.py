@@ -22,7 +22,7 @@ def visualize_scene_3d(cfg):
         f"Visualizing voxel maps for scene at: {cfg.hm_data.saved_dir}")
 
     voxel2d, voxel3d = load_saved_voxel_maps(cfg)
-    
+
     rgb_dir = f"{cfg.hm_data.rgb_dir}"
     depth_dir = f"{cfg.hm_data.depth_dir}"
     poses_dir = f"{cfg.hm_data.poses_dir}"
@@ -31,7 +31,7 @@ def visualize_scene_3d(cfg):
     list_idx = sorted(list_idx, key=lambda x: int(x))
 
     list_xyz = []
-    for idx in tqdm(list_idx):
+    for idx in tqdm(list_idx[0:-1:1]):
         rgb = imread(f"{rgb_dir}/{idx}.jpg")
         depth_map = np.load(f"{depth_dir}/{idx}.npy")
         cam_pose = np.load(f"{poses_dir}/{idx}.npy")
@@ -47,11 +47,12 @@ def visualize_scene_3d(cfg):
         list_xyz.append(local_xyz)
 
     xyz_rgb_wc = np.hstack(list_xyz)
-    plot_color_plc(xyz_rgb_wc[:3, :].T, xyz_rgb_wc[3:, :].T)
+    mask = xyz_rgb_wc[1, :] > 0
+    plot_color_plc(xyz_rgb_wc[:3, mask].T, xyz_rgb_wc[3:, mask].T)
 
 
 @hydra.main(version_base=None,
-            config_path=HM3D_DATA_COLLECTOR_CFG_DIR,
+            config_path=get_abs_path(__file__),
             config_name="cfg.yaml")
 def main(cfg):
     logging.warning(f"running: {cfg.script}")

@@ -1,0 +1,19 @@
+{
+	"root": "/media/public_dataset/habitat/v0.2/example",
+	"list_scenes_basis": {
+		"CFVBbU9Rsyb": "00337-CFVBbU9Rsyb/CFVBbU9Rsyb.basis.glb",
+		"NBg5UqG3di3": "00770-NBg5UqG3di3/NBg5UqG3di3.basis.glb",
+		"GLAQ4DNUx5U": "00861-GLAQ4DNUx5U/GLAQ4DNUx5U.basis.glb"
+	},
+	"list_scenes_glb": {
+		"CFVBbU9Rsyb": "00337-CFVBbU9Rsyb/CFVBbU9Rsyb.basis.glb",
+		"NBg5UqG3di3": "00770-NBg5UqG3di3/NBg5UqG3di3.basis.glb",
+		"GLAQ4DNUx5U": "00861-GLAQ4DNUx5U/GLAQ4DNUx5U.semantic.glb"
+	},
+	"list_scenes_semantic": {
+		"GLAQ4DNUx5U": "00861-GLAQ4DNUx5U/GLAQ4DNUx5U.semantic.glb"
+	},
+	"scenes_basis": 3,
+	"scenes_glb": 3,
+	"scenes_semantic": 1
+}

@@ -1,0 +1,41 @@
+
+FROM fairembodied/cudagl:11.7.1-cudnn8-devel-1.2-glvnd-devel-ubuntu22.04
+
+# Set non-interactive frontend
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    cmake \
+    git \
+    python3-dev \
+    python3-pip \
+    python3-setuptools \
+    python3-wheel \
+    libegl1-mesa-dev \
+    libglew-dev \
+    libosmesa6-dev \
+    libxcb-cursor0 \
+    libsm6 libxext6 libxrender-dev \
+    libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr-dev libxss1 libxcursor-dev libxinerama-dev libxi-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Upgrade pip
+RUN python3 -m pip install --upgrade pip
+
+# Clone habitat-Sim
+RUN git clone --branch stable https://github.com/facebookresearch/habitat-sim.git /habitat-sim
+WORKDIR /habitat-sim
+RUN pip install -r requirements.txt
+RUN python3 setup.py install --bullet --with-cuda
+
+# Clone habitat-lab
+# RUN git clone --branch stable --depth 1 https://github.com/facebookresearch/habitat-lab.git /habitat-lab
+# WORKDIR /habitat-lab
+# RUN pip install -e habitat-lab
+# RUN pip install -e habitat-baselines
+
+COPY dockerfile.habitat_lab /dockerfile.habitat_lab
+# Default command
+CMD ["/bin/bash"]

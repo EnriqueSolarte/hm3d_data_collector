@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build --build-arg USER=$(whoami) --build-arg USER_UID=$(id -u) -t hm3d_collector .
+docker build -f dockerfile.data_collector -t habitat_data_collector:dev .
