@@ -19,7 +19,7 @@ else
         --env="DISPLAY=${DISPLAY}" \
         --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
         -v /media/datasets/habitat/:/media/datasets/habitat/ \
-        -v /media/datasets/hm_semantic_maps/map_free_navigation:/data_collected \
-        -v /media/q200/kike/docker_ws/test_bases/tests:/tests \
+        -v /media/datasets/hm_semantic_maps/map_free_navigation:/media/datasets/hm_semantic_maps/map_free_navigation \
+        -v /media/q200/kike/cognitive_map_ws/collecting_data_for_vlm:/media/q200/kike/cognitive_map_ws/collecting_data_for_vlm \
         habitat_data_collector:dev
 fi

@@ -13,3 +13,4 @@ vispy
 hydra-core
 geometry-perception-utils-dev @ git+https://github.com/EnriqueSolarte/geometry_perception_utils.git@latest
 numpy==1.26.4
+autopep8

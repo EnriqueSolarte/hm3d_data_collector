@@ -18,8 +18,16 @@ habitat:
   sensor_height: 1.0
 
 hm_data:
-  init_pos: [1.3492731  ,0.25945458 ,1.9171098 ]
-  init_rot: [1, 0, 0, 0]
+  init_pos: [0.02597862, 1.1390874, -1.64998]   
+  # init_pos:
+  # - -2.396437
+  # - 1.1390874
+  # - -4.624113
+  init_rot:
+  - 1
+  - 0
+  - 0
+  - 0
 
 data_dir: /media/datasets/hm_semantic_maps/map_free_navigation/vlm_global_goal
 hm3d_dir: /media/datasets/habitat/data_bk/scene_datasets/hm3d
@@ -35,7 +43,7 @@ voxel_grid_3d:
 hm_split: train
 hm_idx_scene: '00004'
 hm_scene_name: VqCaAuuoeWk
-hm_data_version: 0
+hm_data_version: tmp
 
 excluded_semantics: ['ceiling', "wall", "frame", "rod", "unknown", "Unknown"]
 min_vxl_sem_map: 20

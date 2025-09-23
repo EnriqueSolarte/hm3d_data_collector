@@ -5,4 +5,5 @@ code --install-extension ms-python.autopep8
 code --install-extension mhutchie.git-graph
 code --install-extension eamodio.gitlens
 code --install-extension oderwat.indent-rainbow
+code --install-extension geriyoco.vscode-image-gallery
 

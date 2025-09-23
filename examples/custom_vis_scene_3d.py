@@ -31,7 +31,7 @@ def visualize_scene_3d(cfg):
     list_idx = sorted(list_idx, key=lambda x: int(x))
 
     list_xyz = []
-    for idx in tqdm(list_idx[0:-1:1]):
+    for idx in tqdm(list_idx[0:-1:cfg.get('skip', 10)]):
         rgb = imread(f"{rgb_dir}/{idx}.jpg")
         depth_map = np.load(f"{depth_dir}/{idx}.npy")
         cam_pose = np.load(f"{poses_dir}/{idx}.npy")

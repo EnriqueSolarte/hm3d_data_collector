@@ -31,6 +31,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxi6 \
     libxtst6 \
     libxcb-xinerama0 \
+    libdbus-1-3 \
+    libxcb-icccm4 \
+    libxcb-image0 \
+    libxcb-keysyms1 \
+    libxcb-render-util0 \
+    libxcb-xinerama0 \
+    libxcb-xkb1 \
+    libxkbcommon-x11-0 \
+    libxcb-cursor0 \
+    libxcb-shape0 \
     && rm -rf /var/lib/apt/lists/*
         
 # Silence habitat-sim logs
@@ -40,7 +50,7 @@ ENV MAGNUM_LOG="quiet"
 # COPY dir 
 COPY . /hm3d_collector
 WORKDIR /hm3d_collector
-# RUN /bin/bash -c ". activate habitat; cd /hm3d_collector; pip install -r requirements.txt; pip install ."
 
-# RUN /bin/bash -c "cd /hm3d_collector; pip install -r requirements.txt; pip install -e ."
-
+RUN /bin/bash -c "cd /hm3d_collector; pip install -r requirements.txt; pip install -e ."
+COPY dockerfile.data_collector /dockerfile.data_collector
+CMD ["/bin/bash"]
