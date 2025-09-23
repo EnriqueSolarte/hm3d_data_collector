@@ -3,6 +3,9 @@
 This repository is a python package/library that: (1) accesses to habitat-sim, (2) allows the user to collect data, and (3) renders data (different sensor modalities). The main purposes of this library is to pre-process [HM3D dataset](https://github.com/facebookresearch/habitat-sim.git) for pilot, quick, and offline experiments.
 
 ## News and updates
+- **2025-09-23**: New tag @v2.1.4
+	- Fix docker container to visualization of PointCloud using `vispy`
+	- data collection visualization using topdown view and image view in GUI 
 - **2025-07-03**: Updated to @v2.1.3
 	- Add initial position and orientation
 - **2025-04-16**: Updated to @v2.1.1
